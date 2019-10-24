@@ -21,7 +21,7 @@ class SpeakersChimpList extends StatelessWidget {
             child: Chip(
               backgroundColor: Colors.white,
               label: Text(speaker.name),
-              avatar: CircleAvatar(backgroundImage: NetworkImage(speaker.pic)),
+              avatar: CircleAvatar(backgroundImage: NetworkImage(speaker.photoUrl)),
             ),
           );
     });

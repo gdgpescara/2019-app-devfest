@@ -37,7 +37,7 @@ class SingleSchedulePageState extends State<SingleSchedulePage> {
 
           return Container(
             decoration: BoxDecoration(color: Colors.white),
-            child: new ListView.builder(
+            child: ListView.builder(
               itemCount: snapshot.data.length,
               padding: const EdgeInsets.only(top: 10.0),
               itemBuilder: (context, index) =>
@@ -99,7 +99,7 @@ class ActivityTile extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 StartTimeWidget(activity),
-                ActivityChipWidget(activity),
+                //ActivityChipWidget(activity),
               ],
             ),
             Flexible(
@@ -111,7 +111,7 @@ class ActivityTile extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TitleWidget(activity),
-                    //    DescriptionWidget(activity),
+                    //DescriptionWidget(activity),
                     SpeakerChipWidget(activity),
                   ],
                 ),
@@ -137,12 +137,8 @@ class SpeakerChipWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (activity.type != "activity") {
-      return SpeakersChimpList(speakersRepo.getSpeakersById(activity.speakersId),
-          activity.id);
-    } else {
-      return Container();
-    }
+    return SpeakersChimpList(speakersRepo.getSpeakersById(activity.speakers),
+        activity.id);
   }
 }
 
@@ -158,6 +154,8 @@ class TitleWidget extends GenericScheduleWidget {
         child: Text(
           activity.title,
           textScaleFactor: 1.4,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
@@ -170,7 +168,7 @@ class DescriptionWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ((activity.desc != null) ? Text(activity.desc) : Container());
+    return ((activity.description != null) ? Text(activity.description) : Container());
   }
 }
 
@@ -187,7 +185,7 @@ class StartTimeWidget extends GenericScheduleWidget {
   //    color = Colors.blueAccent;
   //  }
 
-    return Text(DateTimeHelper.formatTime(activity.start),
+    return Text(activity.startTime,
         textScaleFactor: 1.8,
         style: TextStyle(color: color, fontWeight: FontWeight.w300));
   }
@@ -198,44 +196,22 @@ class ActivityChipWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (activity.type == "talk") {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2.0),
-            child: Text(
-              "TALK",
-              style: TextStyle(
-                  color: ColorUtils.hexToColor("#676767"), fontWeight: FontWeight.w300),
-              textScaleFactor: 0.8,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          child: Text(
+            "TALK",
+            style: TextStyle(
+                color: ColorUtils.hexToColor("#676767"), fontWeight: FontWeight.w300),
+            textScaleFactor: 0.8,
           ),
-        ],
-      );
-    }
-    if (activity.type == "workshop") {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2.0),
-            child: Text(
-              "WORKSHOP",
-              style: TextStyle(
-                  color: ColorUtils.hexToColor("#676767"), fontWeight: FontWeight.w300),
-              textScaleFactor: 0.7,
-            ),
-          ),
-        ],
-      );
-    } else {
-      return Text("");
-    }
+        ),
+      ],
+    );
   }
 }
 

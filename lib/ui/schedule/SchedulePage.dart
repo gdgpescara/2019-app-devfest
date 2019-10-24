@@ -7,18 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class SchedulePage extends StatelessWidget {
-  SpeakersRepository speakersRepo;
+  final SpeakersRepository speakersRepo;
 
   SchedulePage(this.speakersRepo);
 
   @override
   Widget build(BuildContext context) {
-    var day = new DateTime.now().day;
-    var index = day - 24;
+    var day = DateTime.now().day;
+    var index = day - 2;
 
     return DefaultTabController(
-      initialIndex: index > 0 ? index : 0,
-      length: 7,
+      initialIndex: index > 0 && index < 2 ? index : 0,
+      length: 2,
       child: Column(
         children: <Widget>[
           TabBar(
@@ -31,25 +31,15 @@ class SchedulePage extends StatelessWidget {
             ),
             isScrollable: true,
             tabs: [
-              Tab(child: DevFestTabTextTheme("Aug 24")),
-              Tab(child: DevFestTabTextTheme("Aug 25")),
-              Tab(child: DevFestTabTextTheme("Aug 26")),
-              Tab(child: DevFestTabTextTheme("Aug 27")),
-              Tab(child: DevFestTabTextTheme("Aug 28")),
-              Tab(child: DevFestTabTextTheme("Aug 29")),
-              Tab(child: DevFestTabTextTheme("Aug 30")),
+              Tab(child: DevFestTabTextTheme("Nov 2")),
+              Tab(child: DevFestTabTextTheme("Nov 3")),
             ],
           ),
           Expanded(
             child: TabBarView(
               children: [
-                SingleSchedulePage(24, speakersRepo),
-                SingleSchedulePage(25, speakersRepo),
-                SingleSchedulePage(26, speakersRepo),
-                SingleSchedulePage(27, speakersRepo),
-                SingleSchedulePage(28, speakersRepo),
-                SingleSchedulePage(29, speakersRepo),
-                SingleSchedulePage(30, speakersRepo),
+                SingleSchedulePage(2, speakersRepo),
+                SingleSchedulePage(3, speakersRepo),
               ],
             ),
           )

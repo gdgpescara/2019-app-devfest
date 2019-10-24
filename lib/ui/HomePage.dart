@@ -22,10 +22,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
 
-    return new MaterialApp(
-        title: 'DevFest Levante 2019',
+    return MaterialApp(
+        title: 'DevFest Pescara 2019',
         debugShowCheckedModeBanner: false,
-        theme: new ThemeData(
+        theme: ThemeData(
             brightness: Brightness.light,
             primarySwatch: Colors.blue,
             fontFamily: "Lato"),
@@ -59,7 +59,7 @@ class HomePageScaffold extends StatefulWidget {
   const HomePageScaffold(this.user);
 
   @override
-  HomeScaffoldState createState() => new HomeScaffoldState(user);
+  HomeScaffoldState createState() => HomeScaffoldState(user);
 }
 
 class HomeScaffoldState extends State<HomePageScaffold> {
@@ -71,7 +71,7 @@ class HomeScaffoldState extends State<HomePageScaffold> {
   int tabPosition = 0;
   var currentPage;
   List<Widget> pages;
-  FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
+  FirebaseMessaging firebaseMessaging = FirebaseMessaging();
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   HomeScaffoldState(this.user);
 
@@ -206,23 +206,23 @@ class HomeScaffoldState extends State<HomePageScaffold> {
                         shape: BoxShape.circle,
                         image: DecorationImage(
                             fit: BoxFit.fill,
-                            image: new NetworkImage(user.photoUrl)))),
+                            image: NetworkImage(user.photoUrl)))),
               ),
             ),
           ),
           title: Text(
-            "DevFest Levante",
+            "DevFest Pescara",
             style: TextStyle(color: Colors.black),
           ),
         ),
-        bottomNavigationBar: new Theme(
+        bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(
                 canvasColor: Colors.white,
                 primaryColor: Colors.blueAccent,
                 textTheme: Theme
                     .of(context)
                     .textTheme
-                    .copyWith(caption: new TextStyle(color: Colors.black54))),
+                    .copyWith(caption: TextStyle(color: Colors.black54))),
             child: navBar),
         body: currentPage);
   }
@@ -269,10 +269,10 @@ class HomeScaffoldState extends State<HomePageScaffold> {
 
     firebaseMessaging.subscribeToTopic("devfest_levante_2019");
 
-    flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
-    var androidLocalNotifications = new AndroidInitializationSettings('mipmap/ic_launcher');
-    var iOSLocalNotifications = new IOSInitializationSettings();
-    var initSettings = new InitializationSettings(androidLocalNotifications, iOSLocalNotifications);
+    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+    var androidLocalNotifications = AndroidInitializationSettings('mipmap/ic_launcher');
+    var iOSLocalNotifications = IOSInitializationSettings();
+    var initSettings = InitializationSettings(androidLocalNotifications, iOSLocalNotifications);
     flutterLocalNotificationsPlugin.initialize(initSettings);
   }
 }

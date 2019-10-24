@@ -15,7 +15,7 @@ class FaqPage extends StatelessWidget {
 
           return Container(
             decoration: BoxDecoration(color: Colors.white),
-            child: new ListView.builder(
+            child: ListView.builder(
               // Count Tournament header as item
               itemCount: snapshot.data.length+1,
               padding: const EdgeInsets.only(top: 10.0),

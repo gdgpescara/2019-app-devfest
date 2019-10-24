@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:collection';
+import 'dart:developer';
 
 import 'package:devfest_levante_2019/model/DevFestActivity.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,24 +10,33 @@ import 'package:devfest_levante_2019/model/DevFestUser.dart';
 class ActivitiesRepository {
   static Stream<List<DevFestActivity>> getActivities() {
     return Firestore.instance
-        .collection('sessions')
+        .collection('generatedSessions')
         .snapshots()
         .map((snapshot) => (activityMapper(snapshot)));
   }
 
   static Stream<List<DevFestActivity>> getActivitiesByDay(int day) {
+    String date;
+    if (day == 2) {
+      date = '2019-11-02';
+    }
+
+    if (day == 3) {
+      date = '2019-11-03';
+    }
+
     return Firestore.instance
-        .collection('sessions')
-        .orderBy("startsAt")
-        .where("day", isEqualTo: day)
+        .collection('generatedSessions')
+        .orderBy("startTime")
+        .where("day", isEqualTo: date)
         .snapshots()
         .map((snapshot) => (activityMapper(snapshot)));
   }
 
   static getFavouriteActivities(List<dynamic> favourites) {
     return Firestore.instance
-        .collection('sessions')
-        .orderBy("startsAt")
+        .collection('generatedSessions')
+        .orderBy("startTime")
         .snapshots()
         .map((snapshot) => (favouriteActivityMapper(snapshot, favourites)));
   }
@@ -47,23 +57,19 @@ class ActivitiesRepository {
 
   static List<DevFestActivity> activityMapper(QuerySnapshot snapshot) {
     List<DevFestActivity> activities = [];
-
     for (int i = 0; i < snapshot.documents.length; i++) {
       DocumentSnapshot document = snapshot.documents[i];
       activities.add(activityParser(document));
-
     }
 
     return activities;
   }
 
   static DevFestActivity activityParser(DocumentSnapshot document) {
-    int startsAt = document["startsAt"];
-    int endsAt = document["endsAt"];
     var speakers = List<DevFestMiniSpeaker>();
 
     List<dynamic> speakersMap = document["speakers"];
-
+    
     for (var speaker in speakersMap) {
       speakers.add(DevFestMiniSpeaker(speaker["id"], speaker["name"]));
     }
@@ -71,29 +77,37 @@ class ActivitiesRepository {
     if (document["description"] != null) {
       return DevFestActivity(
           document["id"],
-          "workshop",
           document["title"],
           document["description"],
-          "",
-          "",
+          document["duration"],
+          document["complexity"],
           document["day"],
-          DateTime.fromMillisecondsSinceEpoch(startsAt),
-          DateTime.fromMillisecondsSinceEpoch(endsAt),
+          document["dateReadable"],
+          document["startTime"],
+          document["endTime"],
+          document["icon"],
+          document["language"],
+          document["mainTag"],
           speakers,
-          "");
+          [],
+          document["track"]);
     } else {
       return DevFestActivity(
           document["id"],
-          "activity",
           document["title"],
           "",
-          "",
-          "",
+          document["duration"],
+          document["complexity"],
           document["day"],
-          DateTime.fromMillisecondsSinceEpoch(startsAt),
-          DateTime.fromMillisecondsSinceEpoch(endsAt),
+          document["dateReadable"],
+          document["startTime"],
+          document["endTime"],
+          document["icon"],
+          document["language"],
+          document["mainTag"],
           speakers,
-          "");
+          [],
+          document["track"]);
     }
   }
 }

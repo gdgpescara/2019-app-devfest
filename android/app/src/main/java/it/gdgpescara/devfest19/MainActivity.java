@@ -1,4 +1,4 @@
-package com.github.corouteam.devfestlevante2019;
+package it.gdgpescara.devfest19;
 
 import android.app.Activity;
 import android.graphics.Color;

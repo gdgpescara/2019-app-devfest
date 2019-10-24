@@ -30,7 +30,7 @@ class SpeakersList extends StatelessWidget {
               Row(
                 children: <Widget>[
                   CircleAvatar(
-                    backgroundImage: NetworkImage(speaker.pic),
+                    backgroundImage: NetworkImage(speaker.photoUrl),
                     minRadius: 35.0,
                   ),
                   SizedBox(
@@ -78,10 +78,10 @@ class CommunityChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ((speaker.tagline != "")
+    return ((speaker.shortBio != "")
         ? Chip(
       label: Text(
-        speaker.tagline,
+        speaker.shortBio,
         style: TextStyle(color: Colors.white),
       ),
       backgroundColor: Colors.deepPurpleAccent,

@@ -9,7 +9,7 @@ class SpeakersRepository {
 
   static Future<List<DevFestSpeaker>> getSpeakers() async {
     return (await Firestore.instance
-        .collection('speakers')
+        .collection('generatedSpeakers')
         .getDocuments())
         .documents
         .map((snapshot){
@@ -23,7 +23,6 @@ class SpeakersRepository {
     for (int i = 0; i < snapshot.documents.length; i++) {
       DocumentSnapshot document = snapshot.documents[i];
       speakers.add(parseSpeaker(document));
-
     }
 
     return speakers;
@@ -35,11 +34,19 @@ class SpeakersRepository {
       return DevFestSpeaker(
           document["id"],
           document["bio"],
-          document["tagLine"],
-          document["fullName"],
-          document["profilePicture"]);
+          document["name"],
+          document["company"],
+          document["companyLogoUrl"],
+          document["country"],
+          document["order"],
+          document["photoUrl"],
+          document["shortBio"],
+          document["sessions"],
+          document["tags"],
+          document["badges"],
+          document["title"],);
     } catch (e) {
-      return DevFestSpeaker("", "", "", "", "");
+      return DevFestSpeaker("", "", "", "", "", "", 0, "", "", [], [], [], "");
     }
   }
 

@@ -59,7 +59,7 @@ class UserRepository {
 
     if (user.bookmarks == null) {
       // If user has no bookmarks, initialize the array
-      bookmarksArray = new List<dynamic>();
+      bookmarksArray = List<dynamic>();
     } else {
       // else get current bookmarks
       // List<>.from: returns a NON-FIXED list instead of a fixed one
@@ -95,6 +95,7 @@ class UserRepository {
         document['email'],
         document['displayName'],
         document["notificationToken"],
+        document["photoURL"],
         document["bookmarks"]);
   }
 }

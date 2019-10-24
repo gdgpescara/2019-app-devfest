@@ -46,7 +46,7 @@ class FavouriteSchedulePage extends StatelessWidget {
 
                 return Container(
                   decoration: BoxDecoration(color: Colors.white),
-                  child: new ListView.builder(
+                  child: ListView.builder(
                     itemCount: snapshot.data.length,
                     padding: const EdgeInsets.only(top: 10.0),
                     itemBuilder: (context, index) =>
@@ -155,12 +155,8 @@ class SpeakerChipWidget extends GenericScheduleWidget {
     // Even if this is really cool, we need to join talk with speakers. Later.
     // TODO query Firestore with speakerID
 
-    if (activity.type != "activity") {
-      return SpeakersChimpList(speakersRepo.getSpeakersById(activity.speakersId),
-          activity.id);
-    } else {
-      return Container();
-    }
+    return SpeakersChimpList(speakersRepo.getSpeakersById(activity.speakers),
+        activity.id);
   }
 }
 
@@ -188,7 +184,7 @@ class DescriptionWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ((activity.desc != null) ? Text(activity.desc) : Container());
+    return ((activity.description != null) ? Text(activity.description) : Container());
   }
 }
 
@@ -210,10 +206,10 @@ class DateTimeWidget extends GenericScheduleWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        Text(DateTimeHelper.formatSimpleDate(activity.start),
+        Text(activity.dateReadable,
             textScaleFactor: 1.2,
             style: TextStyle(color: color, fontWeight: FontWeight.bold)),
-        Text(DateTimeHelper.formatTime(activity.start),
+        Text(activity.startTime,
             textScaleFactor: 1.8,
             style: TextStyle(color: color, fontWeight: FontWeight.w300)),
       ],
@@ -226,44 +222,22 @@ class ActivityChipWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (activity.type == "talk") {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2.0),
-            child: Text(
-              "TALK",
-              style: TextStyle(
-                  color: ColorUtils.hexToColor("#676767"), fontWeight: FontWeight.w300),
-              textScaleFactor: 0.8,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 2.0),
+          child: Text(
+            "TALK",
+            style: TextStyle(
+                color: ColorUtils.hexToColor("#676767"), fontWeight: FontWeight.w300),
+            textScaleFactor: 0.8,
           ),
-        ],
-      );
-    }
-    if (activity.type == "workshop") {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 2.0),
-            child: Text(
-              "WORKSHOP",
-              style: TextStyle(
-                  color: ColorUtils.hexToColor("#676767"), fontWeight: FontWeight.w300),
-              textScaleFactor: 0.7,
-            ),
-          ),
-        ],
-      );
-    } else {
-      return Text("");
-    }
+        ),
+      ],
+    );
   }
 }
 

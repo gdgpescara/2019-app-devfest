@@ -117,7 +117,7 @@ class MapPage extends StatelessWidget {
                   subdomains: ['a', 'b', 'c']),
               MarkerLayerOptions(
                 markers: [
-                  new Marker(
+                  Marker(
                     width: 80.0,
                     height: 80.0,
                     point: LatLng(40.273107, 18.418159),

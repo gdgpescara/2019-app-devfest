@@ -3,7 +3,7 @@ import 'package:timeago/timeago.dart' as timeago;
 
 class DateTimeHelper {
   static String formatTime(DateTime dateTime) {
-    final dateFormat = new DateFormat('HH:mm');
+    final dateFormat = DateFormat('HH:mm');
 
     return dateFormat.format(dateTime);
   }
@@ -15,12 +15,12 @@ class DateTimeHelper {
   }
 
   static String formatTalkDateTimeStart(DateTime dateTime) {
-    final dateFormat = new  DateFormat('EEE, HH:mm');
+    final dateFormat =  DateFormat('EEE, HH:mm');
     return dateFormat.format(dateTime);
   }
 
   static String formatTalkTimeEnd(DateTime dateTime) {
-    final dateFormat = new  DateFormat('HH:mm');
+    final dateFormat =  DateFormat('HH:mm');
     return dateFormat.format(dateTime);
   }
 

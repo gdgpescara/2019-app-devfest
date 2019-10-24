@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'DevFest Levante 2019',
+      title: 'DevFest Pescara  2019',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SplashScreenWidget(),
@@ -66,10 +66,10 @@ class SplashScreenWidget extends StatelessWidget {
         ),
       ),
       child: Center(
-        child: new Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            new Padding(
+           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 42.0),
               child: Image(
                 image: AssetImage('assets/login.png'),
@@ -78,7 +78,7 @@ class SplashScreenWidget extends StatelessWidget {
             SizedBox(height: MediaQuery.of(context).size.height/2),// you will get value which is 1/3rd part of height of your device screen
             RaisedButton(
                 color: Colors.white,
-                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
                 textColor: Colors.blueAccent,
                 onPressed: () {
                   _handleSignIn(context);

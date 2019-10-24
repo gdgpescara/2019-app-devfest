@@ -3,9 +3,10 @@ class DevFestUser {
   String email;
   String displayName;
   String notificationToken;
+  String photoURL;
   List<dynamic> bookmarks = List<dynamic>();
 
   DevFestUser();
   DevFestUser.create(this.userId, this.email, this.displayName,
-      this.notificationToken, this.bookmarks);
+      this.notificationToken, this.photoURL, this.bookmarks);
 }

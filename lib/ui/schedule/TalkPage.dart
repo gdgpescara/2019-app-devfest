@@ -44,7 +44,7 @@ class TalkPage extends StatelessWidget {
         bottomNavigationBar: Container(
           child: BottomAppBar(
             shape: CircularNotchedRectangle(),
-            child: new Row(
+            child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -131,17 +131,16 @@ class TalkCoverWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (activity.cover != null) {
-      return FadeInImage.assetNetwork(
-          fit: BoxFit.fitWidth,
-          placeholder: 'assets/talk_generic.jpg',
-          image: activity.cover);
-    } else {
-      return Image(
-        fit: BoxFit.fitWidth,
-        image: AssetImage('assets/talk_generic.jpg'),
-      );
-    }
+    // if (activity.cover != null) {
+    //   return FadeInImage.assetNetwork(
+    //       fit: BoxFit.fitWidth,
+    //       placeholder: 'assets/talk_generic.jpg',
+    //       image: activity.cover);
+    // } else {
+    return Image(
+      fit: BoxFit.fitWidth,
+      image: AssetImage('assets/talk_generic.jpg'),
+    );
   }
 }
 
@@ -191,17 +190,17 @@ class ActivityChipWidget extends GenericScheduleWidget {
                 height: 8.0,
               ),
               Text(
-                DateTimeHelper.formatTalkDateTimeStart(activity.start) + " - "+ DateTimeHelper.formatTalkTimeEnd(activity.end),
+                activity.startTime + " - "+ activity.endTime,
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
               Text(
-                activity.location,
+                activity.track["title"],
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
               SizedBox(
                 height: 28.0,
               ),
-              AbstractWidget(activity),
+              //AbstractWidget(activity),
               DescriptionWidget(activity),
               SizedBox(
                 height: 48.0,
@@ -220,11 +219,7 @@ class SpeakerChipWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (activity.type != "activity") {
-      return SpeakersList(speakersRepo.getSpeakersById(activity.speakersId));
-    } else {
-      return Container();
-    }
+    return SpeakersList(speakersRepo.getSpeakersById(activity.speakers));
   }
 }
 
@@ -233,9 +228,9 @@ class DescriptionWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ((activity.desc != null)
+    return ((activity.description != null)
         ? Text(
-            activity.desc,
+            activity.description,
             textAlign: TextAlign.justify,
           )
         : Container());
@@ -247,12 +242,10 @@ class AbstractWidget extends GenericScheduleWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ((activity.abstract != null)
-        ? Text(
-            activity.abstract,
-            textAlign: TextAlign.justify,
-          )
-        : Container());
+    return Text(
+        activity.description,
+        textAlign: TextAlign.justify,
+      );
   }
 }
 

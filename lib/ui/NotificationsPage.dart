@@ -9,8 +9,8 @@ class NotificationsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(appBar: AppBar(
       centerTitle: true,
-      leading: new IconButton(
-        icon: new Icon(Icons.arrow_back),
+      leading: IconButton(
+        icon: Icon(Icons.arrow_back),
         color: Colors.black54,
         onPressed: () => Navigator.of(context).pop(),
       ),
