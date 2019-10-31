@@ -1,8 +1,8 @@
-# DevFest Levante 2019 - Official App
+# DevFest Pescara 2019 - Official App
 
-The official app for [Dev Fest Levante 2019](http://devfestlevante.eu/) written in **Flutter**.
+The official app for [Dev Fest Pescara 2019](https://devfest.gdgpescara.it/) written in **Flutter**.
 
-<a href="https://play.google.com/store/apps/details?id=com.github.corouteam.devfestlevante2019"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="300" /></a>
+<a href="#"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" width="300" /></a>
 
 ## Structure
 The app is divided in 3 main sections:

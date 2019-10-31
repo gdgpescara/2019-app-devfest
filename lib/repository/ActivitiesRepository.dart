@@ -52,6 +52,15 @@ class ActivitiesRepository {
         activities.add(parsedActivity);
       }
     }
+
+    activities.sort((a, b) {
+      var value = a.day.compareTo(b.day);
+      if (value != 0) {
+        return value;
+      }
+      return a.startTime.compareTo(b.startTime);
+    });
+
     return activities;
   }
 

@@ -6,7 +6,6 @@ import 'package:devfest_levante_2019/repository/UserRepository.dart';
 import 'package:devfest_levante_2019/ui/schedule/SpeakersChimpList.dart';
 import 'package:devfest_levante_2019/ui/schedule/TalkPage.dart';
 import 'package:devfest_levante_2019/utils/ColorUtils.dart';
-import 'package:devfest_levante_2019/utils/DateTimeHelper.dart';
 import 'package:devfest_levante_2019/utils/LoadingWidget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -230,7 +229,7 @@ class ActivityChipWidget extends GenericScheduleWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 2.0),
           child: Text(
-            "TALK",
+            activity.track["title"],
             style: TextStyle(
                 color: ColorUtils.hexToColor("#676767"), fontWeight: FontWeight.w300),
             textScaleFactor: 0.8,

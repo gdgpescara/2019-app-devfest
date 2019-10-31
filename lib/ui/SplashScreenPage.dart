@@ -61,7 +61,7 @@ class SplashScreenWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/home.jpg"),
+          image: AssetImage("assets/appbackground.png"),
           fit: BoxFit.cover,
         ),
       ),
@@ -69,12 +69,6 @@ class SplashScreenWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 42.0),
-              child: Image(
-                image: AssetImage('assets/login.png'),
-              ),
-            ),
             SizedBox(height: MediaQuery.of(context).size.height/2),// you will get value which is 1/3rd part of height of your device screen
             RaisedButton(
                 color: Colors.white,

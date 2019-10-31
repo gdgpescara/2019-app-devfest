@@ -19,26 +19,33 @@ class AboutPage extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 16.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Expanded(child: PersonWidget("The\nOpenSourcer", "https://avatars0.githubusercontent.com/u/5623301?s=460&v=4")),
-              // Expanded(child: PersonWidget("The\nMacBook Slayer", "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/18485429_10208858388241944_3886175293398476643_n.jpg?_nc_cat=107&_nc_oc=AQlwRl-o2xa4tHXNyXZYvAfCam1j1UmkAOkTMmqocgLVIFvzGkBbVd_xhwsa_9DznIY&_nc_ht=scontent-mxp1-1.xx&oh=c8d47209f29d5fc372486b7809a05a97&oe=5DD5BE10")),
-              // Expanded(child: PersonWidget("GIT worst\nNightmare", "https://scontent-mxp1-1.xx.fbcdn.net/v/t1.0-9/26815441_1539794166116027_3328025931532357730_n.jpg?_nc_cat=107&_nc_oc=AQnBk0x0mJ--ZSYWpblp97DgHoXbM5vKf_0Q09BbfCRS0Oaj1Hg9ZgK3LcJaxLtP5tI&_nc_ht=scontent-mxp1-1.xx&oh=5ffaab3d2a655f93158e842cc65b4178&oe=5DDEFC33")),
+              Expanded(child: PersonWidget("The\nPenguin", "https://scontent-fco1-1.xx.fbcdn.net/v/t1.0-1/c0.0.320.320a/p320x320/18301112_10211414982122553_5848306714782759341_n.jpg?_nc_cat=102&_nc_oc=AQkORAZ3YsybJEoRg_JTNvAoZ19GqIpxRIka2jx5cstqUSUw9FXd-9yPeAQJGW_Ucf4&_nc_ht=scontent-fco1-1.xx&oh=3dbe27f7d2dc3ed9869f54648d2f0b75&oe=5E209E90")),
+              Expanded(child: PersonWidget("The\nPogbo", "https://scontent-fco1-1.xx.fbcdn.net/v/t1.0-1/p320x320/10590481_10202640821928821_6101896505306413566_n.jpg?_nc_cat=106&_nc_oc=AQktCsqB58CZ1gvaEcCiQynO7m0AJUyRVgZ8n9-adWl_lCZWKPhSS8zkezgTwoplNU4&_nc_ht=scontent-fco1-1.xx&oh=1434362b06823a9501224050ef1fc354&oe=5E56BD9B")),
+              Expanded(child: PersonWidget("The\nBuddy", "https://media.licdn.com/dms/image/C4D03AQFmEH-jr8nRYA/profile-displayphoto-shrink_200_200/0?e=1577923200&v=beta&t=sgUqoeBD9mkCWTWQVqQ6GQL-JWYFkwLGHK28Nkor8rE")),
             ],
           ),
         ),
+        // Padding(
+        //   padding: const EdgeInsets.only(top: 32.0),
+        //   child: Column(
+        //     children: <Widget>[
+        //       Text("with the help of some friends at"),
+        //       Text("GDG Pescara", style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+        //       Padding(
+        //         padding: const EdgeInsets.only(top: 8.0),
+        //         child: PersonWidget("The\nBerrick", "https://media.licdn.com/dms/image/C5603AQHwO78I_1dy6A/profile-displayphoto-shrink_200_200/0?e=1567036800&v=beta&t=lTqUX0uih45-1gllEmbzyjTr36BeVF558gDM18NGz1Q"),
+        //       ),
+        //     ],
+        //   ),
+        // ),
         Padding(
           padding: const EdgeInsets.only(top: 32.0),
-          child: Column(
+          child: Row(
             children: <Widget>[
-              Text("with the help of some friends at"),
-              Text("GDG Pescara", style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 8.0),
-              //   child: PersonWidget("The\nFirebaser", "https://media.licdn.com/dms/image/C5603AQHwO78I_1dy6A/profile-displayphoto-shrink_200_200/0?e=1567036800&v=beta&t=lTqUX0uih45-1gllEmbzyjTr36BeVF558gDM18NGz1Q"),
-              // ),
+              Expanded(child: PersonWidget("The\nBerrick", "https://scontent-fco1-1.xx.fbcdn.net/v/t1.0-1/c0.0.320.320a/p320x320/1377375_10200671646622721_1425304864_n.jpg?_nc_cat=110&_nc_oc=AQmUoFOxdlCNjJzYZNOT-PDtEYhrqy6qJ4gApvwA9sP6gBDhm-1xswx_FkKlHhsGYiw&_nc_ht=scontent-fco1-1.xx&oh=37c218e9db91bcb5cd4f9d8766f8981c&oe=5E4F1ABC")),
+              Expanded(child: PersonWidget("The\nPresident", "https://scontent-fco1-1.xx.fbcdn.net/v/t1.0-1/c0.5.621.621a/s320x320/1043873_551352078260437_934602176_n.jpg?_nc_cat=109&_nc_oc=AQnDgmwb_UszFSlHG3bBM5uJuI6J0surkZrtAfBUegoFwyQMsJdm2zmIeMtHO_APkPs&_nc_ht=scontent-fco1-1.xx&oh=e0a04f8f4a82be2b4cbd607dc105eb38&oe=5E22A1BC")),
+              Expanded(child: PersonWidget("The\nUncle", "https://scontent-fco1-1.xx.fbcdn.net/v/t1.0-1/p320x320/40213610_10156212308553110_3208687517570170880_n.jpg?_nc_cat=110&_nc_oc=AQnqDpFG5X_GYi6MskaIOp52VIymgSWbPMsHbxcqt_qQ76iaOekdqVwqjPkmo7sgKOo&_nc_ht=scontent-fco1-1.xx&oh=be4c51a5484af79cd97966cb052758d9&oe=5E4C0B05")),
             ],
           ),
         ),
