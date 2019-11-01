@@ -20,7 +20,7 @@ The app is divided in 3 main sections:
 ### Cloud Firestore
 All **Talks, Speakers and FAQ** are hosted on **Cloud Firestore**.
 
-You can find more about our data structure in [lib/repository](https://github.com/corouteam/2019-app-devfestlevante/tree/master/lib/repository) folder classes.
+You can find more about our data structure in [lib/repository](#) folder classes.
 
 ### Auth
 We use Firebase Authentication to authenticate users and sync bookmarks for each one.
@@ -29,6 +29,6 @@ We use Firebase Authentication to authenticate users and sync bookmarks for each
 We also added Cloud messaging and deployed some code on Cloud Functions to send and manage user notifications. You can find all in the */functions* folder.
 
 ## About and Licence
-DevFest Levante 2019 was made by Corouteam, a small team at **GDG Bari**.
+DevFest Pescara 2019 was made by Palateam, a small team at **GDG Pescara**.
 
 The code is shared under Apache 2.0. Feel free to fork the project and use it for your event!

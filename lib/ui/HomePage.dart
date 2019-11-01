@@ -141,7 +141,7 @@ class HomeScaffoldState extends State<HomePageScaffold> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
-          actions: <Widget>[
+          /*actions: <Widget>[
             IconButton(
               onPressed: () {
                 Navigator.push(
@@ -153,7 +153,7 @@ class HomeScaffoldState extends State<HomePageScaffold> {
               icon: Icon(Icons.notifications,
               color: Colors.black87,),
             )
-          ],
+          ],*/
           backgroundColor: Colors.white,
           elevation: 0.0,
           // Take user data

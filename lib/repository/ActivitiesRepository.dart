@@ -12,7 +12,7 @@ class ActivitiesRepository {
     return Firestore.instance
         .collection('generatedSessions')
         .snapshots()
-        .map((snapshot) => (activityMapper(snapshot)));
+        .map((snapshot) => (activityMapper(snapshot, "")));
   }
 
   static Stream<List<DevFestActivity>> getActivitiesByDay(int day) {
@@ -28,9 +28,9 @@ class ActivitiesRepository {
     return Firestore.instance
         .collection('generatedSessions')
         .orderBy("startTime")
-        .where("day", isEqualTo: date)
+        //.where("day", isEqualTo: date)
         .snapshots()
-        .map((snapshot) => (activityMapper(snapshot)));
+        .map((snapshot) => (activityMapper(snapshot, date)));
   }
 
   static getFavouriteActivities(List<dynamic> favourites) {
@@ -64,11 +64,15 @@ class ActivitiesRepository {
     return activities;
   }
 
-  static List<DevFestActivity> activityMapper(QuerySnapshot snapshot) {
+  static List<DevFestActivity> activityMapper(QuerySnapshot snapshot, String day) {
     List<DevFestActivity> activities = [];
     for (int i = 0; i < snapshot.documents.length; i++) {
       DocumentSnapshot document = snapshot.documents[i];
       activities.add(activityParser(document));
+    }
+
+    if (day.isNotEmpty) {
+      return activities.where((a) => a.day == day).toList();
     }
 
     return activities;
